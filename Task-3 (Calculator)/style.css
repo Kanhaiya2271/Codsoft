@@ -1,0 +1,187 @@
+/* ===== BASE RESET ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== NATURE BACKGROUND ===== */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(145deg, #2d5016, #4a7c29, #1b6b4a, #2d8f6f);
+    background-size: 300% 300%;
+    animation: bgMove 10s ease infinite;
+}
+
+/* slow moving background to give a nature/alive feel */
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* some floating leaf-like circles in background */
+body::before,
+body::after {
+    content: "🍃";
+    position: fixed;
+    font-size: 3rem;
+    opacity: 0.15;
+    animation: floatLeaf 8s ease-in-out infinite;
+}
+
+body::before {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+body::after {
+    bottom: 20%;
+    right: 12%;
+    font-size: 2.5rem;
+    animation-delay: 3s;
+}
+
+@keyframes floatLeaf {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(15deg); }
+}
+
+
+/* ===== CALCULATOR CONTAINER ===== */
+
+.calculator {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 25px;
+    width: 320px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.calc-title {
+    text-align: center;
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+
+/* ===== DISPLAY SCREEN ===== */
+
+.display {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    word-break: break-all;
+}
+
+.previous {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    min-height: 20px;
+}
+
+.current {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+
+/* ===== BUTTONS GRID ===== */
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    padding: 18px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+/* number buttons */
+.btn.number {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.btn.number:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* zero button spans 2 columns */
+.btn.zero {
+    grid-column: span 2;
+}
+
+/* operator buttons */
+.btn.operator {
+    background: rgba(255, 255, 255, 0.08);
+    color: #8fe88b;
+    font-weight: bold;
+}
+
+.btn.operator:hover {
+    background: rgba(143, 232, 139, 0.2);
+}
+
+/* clear button */
+.btn.clear {
+    background: rgba(231, 76, 60, 0.3);
+    color: #ff8a80;
+}
+
+.btn.clear:hover {
+    background: rgba(231, 76, 60, 0.5);
+}
+
+/* delete button */
+.btn.delete {
+    background: rgba(241, 196, 15, 0.2);
+    color: #ffd54f;
+}
+
+.btn.delete:hover {
+    background: rgba(241, 196, 15, 0.35);
+}
+
+/* equals button */
+.btn.equals {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn.equals:hover {
+    background: linear-gradient(135deg, #66bb6a, #388e3c);
+}
+
+/* click effect */
+.btn:active {
+    transform: scale(0.95);
+}
